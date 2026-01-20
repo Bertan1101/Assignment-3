@@ -1,8 +1,9 @@
 import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        Menu menu = new MenuManager();
+        StoreMenu menu = new StoreMenuManager();
         Scanner scanner = new Scanner(System.in);
 
         menu.showMenu();
