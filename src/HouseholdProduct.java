@@ -1,26 +1,21 @@
 public class HouseholdProduct extends Product {
 
-    private String manufacturer;
+    private String usageType;
 
-    public HouseholdProduct(int id, String name, double price, int quantity, String manufacturer) {
+    public HouseholdProduct(int id, String name, double price, int quantity, String usageType) {
         super(id, name, price, quantity);
-        setManufacturer(manufacturer);
+        setUsageType(usageType);
     }
 
-    public void setManufacturer(String manufacturer) {
-        if (manufacturer == null || manufacturer.trim().isEmpty()) {
-            throw new IllegalArgumentException("Manufacturer cannot be empty");
+    public void setUsageType(String usageType) {
+        if (usageType == null || usageType.isEmpty()) {
+            throw new IllegalArgumentException("Usage type required");
         }
-        this.manufacturer = manufacturer;
-    }
-
-    @Override
-    public void displayInfo() {
-        System.out.println(name + " | brand: " + manufacturer);
+        this.usageType = usageType;
     }
 
     @Override
     public String getCategory() {
-        return "Household";
+        return "Household (" + usageType + ")";
     }
 }

@@ -8,19 +8,14 @@ public class FoodProduct extends Product {
     }
 
     public void setExpirationDate(String expirationDate) {
-        if (expirationDate == null || expirationDate.trim().isEmpty()) {
-            throw new IllegalArgumentException("Expiration date cannot be empty");
+        if (expirationDate == null || expirationDate.isEmpty()) {
+            throw new IllegalArgumentException("Expiration date required");
         }
         this.expirationDate = expirationDate;
     }
 
     @Override
-    public void displayInfo() {
-        System.out.println(name + " | expires: " + expirationDate);
-    }
-
-    @Override
     public String getCategory() {
-        return "Food";
+        return "Food (exp: " + expirationDate + ")";
     }
 }

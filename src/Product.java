@@ -14,14 +14,14 @@ public abstract class Product {
 
     public void setId(int id) {
         if (id <= 0) {
-            throw new IllegalArgumentException("Product ID must be positive");
+            throw new IllegalArgumentException("ID must be positive");
         }
         this.id = id;
     }
 
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Product name cannot be empty");
+            throw new IllegalArgumentException("Name cannot be empty");
         }
         this.name = name;
     }
@@ -40,7 +40,20 @@ public abstract class Product {
         this.quantity = quantity;
     }
 
-    public abstract void displayInfo();
-
     public abstract String getCategory();
+
+    public void sell(int amount) throws InvalidProductException {
+        if (amount <= 0) {
+            throw new InvalidProductException("Amount must be positive");
+        }
+        if (amount > quantity) {
+            throw new InvalidProductException("Not enough products in stock");
+        }
+        quantity -= amount;
+    }
+
+    @Override
+    public String toString() {
+        return id + " | " + name + " | " + price + " | " + quantity + " | " + getCategory();
+    }
 }

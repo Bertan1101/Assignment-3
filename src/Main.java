@@ -3,16 +3,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        StoreMenu menu = new StoreMenuManager();
+
+        MenuManager manager = new MenuManager();
         Scanner scanner = new Scanner(System.in);
 
-        menu.showMenu();
-        int choice = scanner.nextInt();
-
-        try {
-            menu.handleChoice(choice);
-        } catch (InvalidChoiceException e) {
-            System.out.println(e.getMessage());
+        while (manager.isRunning()) {
+            manager.showMenu();
+            int choice = scanner.nextInt();
+            manager.handleChoice(choice);
         }
+
+        System.out.println("Program finished");
     }
 }
